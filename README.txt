@@ -1,9 +1,8 @@
 APIs used:
 	Scrapy
 
-scrapy crawl products (runs amazonSpider, because it is named 'products')
+scrapy runspider amazon.py
 
-generates results.html
+scrapy shell <url>
 
-parse using beautiful soup
-
+#generates results.html

@@ -9,21 +9,39 @@ class AmazonSpider(scrapy.Spider):
 
     def parse(self, response):
         self.log('I just visited: ' + response.url)
-        yield {
-            'title': ,
-            'price': ,
-            'sold_by': ,
-        }
+        result_list = response.css('div.s-result-list.s-search-results.sg-row')
+        names = result_list.css('span.a-size-medium::text').extract()
+        prices = result_list.css('.a-price-whole::text').extract()
+        #firstc = result_list.xpath('//*[@id="search"]/div[1]/div[2]/div/span[3]/div[1]/div[1]::data-asin').extract()
+        #asins = product.css('div.data-asin::text').extract()
+            item {
+                'name':  ,
+                'price': ,
+                'asin':
+            }
+            yield item
 
+"""
+for product in response.css('div.sg-col-inner')
+
+#find outlying div container that each product is in
+#loop through storing title of product, price, and sold by
+
+"""
+
+
+"""
 #got the names
 for title in response.css('span.a-size-medium::text').extract():
     print (title)
     print ('\n')
 
+#got the prices in listing order
+for price in response.css('.a-price-whole::text').extract():
+    print (price)
+    print ('\n')
+"""
 
-
-item = response.css('.a-link-normal .a-text-normal::attr(href)').extract()
-price = response.css('.a-price-whole::text').extract()
 
 
 
